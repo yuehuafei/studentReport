@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生成绩单</title>
+    <link rel="stylesheet" href="./addStudent.html">
+    <link rel="stylesheet" href="searchStudent.html">
+    <style>
+        #main{
+            width: 500px;
+           background-color: aliceblue;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <table id="tab" class="table table-striped" border="5" style="text-align: center">
+        <caption><h2>成绩单</h2></caption>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>数学</th>
+            <th>语文</th>
+            <th>英语</th>
+            <th>编程</th>
+        </tr>
+        <script language="javascript">
+           function createTable(){
+                for(var i=0;i<localStorage.length;i++){
+                    var key=localStorage.key(i);
+                    var value=localStorage.getItem(key);
+                    var stu=JSON.parse(value);
+                    var row = document.createElement('tr');//创建行
+                    var numCell = document.createElement('td'); //创建第一列
+                    numCell.innerHTML =stu.stuNum; //填充数据
+                    row.appendChild(numCell); //加入行
+                    var nameCell=document.createElement('td');
+                    nameCell.innerHTML=stu.stuName;
+                    row.appendChild(nameCell);
+                    var classCell=document.createElement('td');
+                    classCell.innerHTML=stu.stuClass;
+                    row.appendChild(classCell);
+                    var mathCell=document.createElement('td');
+                    mathCell.innerHTML=stu.math;
+                    row.appendChild(mathCell);
+                    var chiCell=document.createElement('td');
+                    chiCell.innerHTML=stu.Chinese;
+                    row.appendChild(chiCell);
+                    var engCell=document.createElement('td');
+                    engCell.innerHTML=stu.English;
+                    row.appendChild(engCell);
+                    var proCell=document.createElement('td');
+                    proCell.innerHTML=stu.program;
+                    row.appendChild(proCell);
+                    var tab=document.getElementById("tab");
+                    tab.appendChild(row);
+                }
+            }
+           window.onload=createTable;
+        </script>
+    </table>
+    <hr>
+    <a href="addStudent.html">添加</a>
+    <a href="searchStudent.html">查询</a>
+    <a href="updateStudent.html">修改</a>
+    
+</div>
+</body>
+</html>

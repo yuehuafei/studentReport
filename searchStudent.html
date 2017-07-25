@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询学生成绩</title>
+    <link rel="stylesheet" href="./StudentReport.html">
+    <style>
+        div{
+            background-color: #FFCCFF;
+            width: 400px;
+            margin:0 auto;
+        }
+        input{
+            margin-left: 50px;
+            margin-top: 15px;
+        }
+        a{
+            margin: 20px;
+        }
+    </style>
+    <script>
+        function searchStudent() {
+            var tab=document.getElementById("tab");
+            var rowNum=tab.rows.length;
+            for (i=1;i<rowNum;)
+            {
+                tab.deleteRow(i);
+                rowNum--;
+            }
+            var num=document.getElementById("stuNum").value;
+            if(num==null){
+                alert("学号不能为空，请重新输入！");
+                return;
+            }
+            var strs=num.split(" ");
+            for(var item of strs){
+                var find=0;
+                for(var i=0;i<localStorage.length;i++){
+                    var key=localStorage.key(i);
+                    if(item==key){
+                        var value=localStorage.getItem(key);
+                        var stu=JSON.parse(value);
+                        var row = document.createElement('tr');//创建行
+                        var numCell = document.createElement('td'); //创建第一列
+                        numCell.innerHTML =stu.stuNum; //填充数据
+                        row.appendChild(numCell); //加入行
+                        var nameCell=document.createElement('td');
+                        nameCell.innerHTML=stu.stuName;
+                        row.appendChild(nameCell);
+                        var classCell=document.createElement('td');
+                        classCell.innerHTML=stu.stuClass;
+                        row.appendChild(classCell);
+                        var mathCell=document.createElement('td');
+                        mathCell.innerHTML=stu.math;
+                        row.appendChild(mathCell);
+                        var chiCell=document.createElement('td');
+                        chiCell.innerHTML=stu.Chinese;
+                        row.appendChild(chiCell);
+                        var engCell=document.createElement('td');
+                        engCell.innerHTML=stu.English;
+                        row.appendChild(engCell);
+                        var proCell=document.createElement('td');
+                        proCell.innerHTML=stu.program;
+                        row.appendChild(proCell);
+                        var tab=document.getElementById("tab");
+                        tab.appendChild(row);
+                        find=1;
+                    }
+                }
+                if(find==0){
+                    alert("学号"+item+"不存在");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="main">
+    <p>提示：输入多个学号时，请用空格相连</p>
+    <br/>
+    <input type="text" id="stuNum" placeholder="请输入学号：">
+    <table id="tab" class="table table-striped" border="5" style="text-align: center">
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>数学</th>
+            <th>语文</th>
+            <th>英语</th>
+            <th>编程</th>
+        </tr>
+
+    </table>
+    <input type="button" onclick="searchStudent()" value="查询">
+
+    <a href="StudentReport.html">回主页</a>
+</div>
+</body>
+</html>

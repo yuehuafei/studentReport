@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./StudentReport.html">
+    <script src="./Student.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // execute when DOM content is loaded
+            document.getElementById('my-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+             //   let firstNameArray = document.getElementsByName('firstname');
+             //   printSomething(firstNameArray[0].value);
+                return false;
+            })
+        });
+    </script>
+    <title>添加学生信息</title>
+    <style>
+        div{
+            width: 600px;
+            height: 300px;
+            background-color:#FFCCFF;
+            margin: 0 auto;
+        }
+        input{
+            width: 70px;
+        }
+    </style>
+    <script  type="text/javascript">
+        function getInfo() {
+            var stuNum=document.getElementById("stuNum").value;
+            var stuName=document.getElementById("stuName").value;
+            var stuClass=document.getElementById("stuClass").value;
+            var math=document.getElementById("math").value;
+            var Chinese=document.getElementById("Chinese").value;
+            var English=document.getElementById("English").value;
+            var program=document.getElementById("program").value;
+            var stu=new Student(stuNum,stuName,stuClass,math,Chinese,English,program);
+           var strs=stuNum+" "+stuName+" "+stuClass+" "+math+" "+Chinese+" "+English+" "+program;
+           //检测是否符合规范
+           if(/^\d{4}\s[\u4E00-\u9FFF]{2,10}\s[\u4E00-\u9FFF]{2,20}\d{4}[\u4E00-\u9FFF]\s((\d\d?|100)\s){3}(\d\d?|100)$/.test(strs)){
+               alert("学生"+stuName+"添加成功");
+               stu=JSON.stringify(stu);
+               localStorage.setItem(stuNum,stu);
+           }
+           else{
+               alert("输入格式不正确，请重新输入！");
+           }
+
+        }
+
+    </script>
+</head>
+<body>
+<div>
+<form id = "my-form" action="" onsubmit="getInfo()">
+
+    <table class="table table-striped" border="5" style="text-align: center" width="100px">
+        <caption><h2>添加学生信息</h2></caption>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>数学</th>
+            <th>语文</th>
+            <th>英语</th>
+            <th>编程</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="stuNum"></td>
+            <td><input type="text" id="stuName"></td>
+            <td><input type="text" id="stuClass"></td>
+            <td><input type="text" id="math"></td>
+            <td><input type="text" id="Chinese"></td>
+            <td><input type="text" id="English"></td>
+            <td><input type="text" id="program"></td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Submit" >
+    <a href="StudentReport.html">回主页</a>
+</form>
+    </div>
+</body>
+</html>
