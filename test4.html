@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- 挑战四 -->
+<body>
+<div id="t" class="content" style="background: red;" wife="sophie" onclick="alert('123');"></div>
+</body>
+<script>
+    var t = document.getElementById("t");
+    console.log(t.class);                   // ???
+    console.log(t.getAttribute("class"));   // ???
+    console.log(t.className);               // ???
+    console.log(t.getAttribute("className")); // ???
+    console.log(t.style);                   // ???
+    console.log(t.getAttribute("style"));   // ???
+    console.log(t.style.background);        // ???
+    console.log(t.getAttribute("style.background")); // ???
+    console.log(t.wife);                    // ???
+    console.log(t.getAttribute("wife"));    // ???
+    console.log(t.onclick);                 // ???
+    console.log(t.getAttribute("onclick")); // ???
+</script>
+</html>

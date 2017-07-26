@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- 挑战二 -->
+<body name="ddd">
+<div id = "t">
+    <span>aaa</span>
+    <span>bbb</span>
+    <span>ccc</span>
+</div>
+</body>
+<script>
+    var d = document.getElementById("t");
+    document.writeln(d.childNodes[3].innerHTML); // ???换行的问题
+    document.writeln(d.parentNode.getAttribute("name")); // ???
+</script>
+</html>

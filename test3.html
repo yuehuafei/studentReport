@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- 挑战三 -->
+<body name="ddd">
+<div id = "t">
+    <span>aaa</span>
+    <span>bbb</span>
+    <span>ccc</span>
+</div>
+</body>
+<script>
+    var d = document.getElementById("t").childNodes[1];
+    document.writeln(d.nextSibling.innerHTML);      // ???
+    document.writeln(d.previousSibling.innerHTML);  // ???
+</script>
+</html>
